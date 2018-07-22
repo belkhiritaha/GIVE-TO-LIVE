@@ -1,0 +1,376 @@
+.contimg {
+					display: flex;
+					z-index: -100;
+				}
+
+				@media (max-width: 500px) {
+					.contimg {
+						display: block;
+						z-index: -100;
+					}
+				}
+			
+				.img1{
+				}
+				.img2{
+				}
+
+				.container {
+					  position: relative;
+					
+					  padding: 2%;
+					
+					  margin-left: 24%;
+					  margin-top: 4%;
+					}
+
+					.image {
+					  display: block;
+					  width: 75%;
+					 
+					}
+
+					@media (max-width: 500px) {
+						.image {
+							height:40%;
+							width: 150%;
+							margin-left: -36%;
+						}
+					}
+
+					.overlay {
+					  position: absolute;
+					  bottom: 0;
+					  left: 0;
+					  right: 0;
+					  background-color: #3063b5;
+					  overflow: hidden;
+					 width: 75%;
+					  height: 100%;
+					  -webkit-transform:scale(0);
+					  transition: .3s ease;
+
+					}
+
+					@media (max-width: 500px) {
+						.overlay {
+							height:100%;
+							width: 150%;
+							margin-left: 50%;
+							position: absolute;
+						 	top: 0;
+						}
+					}
+
+					.container:hover .overlay {
+					  transform: scale(1)
+					}
+
+					.text {
+					  color: white;
+					  font-size: 20px;
+					  font-family: "Montserrat", sans-serif;
+					  position: absolute;
+					  top: 50%;
+					  left: 50%;
+					  transform: translate(-50%, -50%);
+					  -ms-transform: translate(-50%, -50%);
+					  text-align: center;
+					  text-transform: uppercase;
+					}
+
+
+
+				@keyframes blop{
+
+					0% {
+						transform: translateY(-50px);
+						opacity: 1;
+					}
+
+					25% {
+						transform: translateY(-25px);
+					}
+
+					50% {
+						transform: translateY();
+
+					}
+					75% {
+						transform: translateY();
+					}
+				}
+				.scroll {
+					transform: translateY(0px);
+					width: 1.7%;
+					height: 1%;
+					margin-left:50%;
+					margin-top: 10%;
+					animation: blop 3s infinite ease-in;
+					color: #3063b5;
+					
+				}
+
+				h2 {	
+						margin-top: 15%;
+						font-family: 'Montserrat', sans-serif;
+						font-weight: bolder;
+						text-transform: uppercase;
+						letter-spacing: 6px;
+						word-spacing: 2px;
+						font-size: 900%;
+						color: black;
+						animation-name:end;
+						animation-duration: 3s;
+						text-align: center;
+				}
+
+				@media (max-width: 500px) {
+					h2 {
+							font-size: 500%;
+							margin-left: 6%;
+						}
+				}
+
+
+
+
+
+				.item1 { grid-area: header; }
+				.item2 { grid-area: menu; }
+				.item3 { grid-area: main; }
+				.item4 { grid-area: right; }
+				.item5 { grid-area: footer; }
+
+					.fab {
+						size:40px;
+						height: 70px;
+						width: 70px;
+					}
+
+					footer {
+						display: grid;
+						  grid-template-areas:
+						    'menu menu blank header header header'
+						    'menu menu blank main right right'
+						    'menu menu blank footer footer footer';
+						  grid-gap: 10px;
+						  margin-top: 10%;
+						  background-color: #21457e;
+						  padding: 10px;
+						  height: 50%;
+						  width: auto;
+					}
+
+					footer>div {
+					  background-color: rgba(66, 134, 244, 0.6);
+					  text-align: center;
+					  width: auto;
+				  }
+
+
+					ul {
+						font-size: 100%;
+						text-align: center;
+						background-color: #3063b5;
+						position: sticky;
+						padding: 1%;
+						padding-right: 3%;
+						width: 95.9%;
+						top: 0;
+						animation-name:start;
+						animation-duration: 5s;
+						z-index: 1;
+					}
+
+					@media (max-width: 500px) {
+
+						ul {
+							margin-top: 4%;
+							
+							animation-name:heys;
+							animation-duration: 1.2s;
+						/*	font-size: 0.75em;*/
+							}
+
+
+						@keyframes heys{
+
+							0% {
+								transform: translateY(-10%);
+								opacity: 0;
+							}
+							100% {
+								transform: translateY(0);
+								opacity: 1;
+								
+							}
+						}
+
+					}
+
+					
+
+					li {
+						display: inline;
+						margin: 2%;
+						font-family: 'Montserrat', sans-serif;
+						font-weight: lighter;
+						text-transform: uppercase;
+						letter-spacing: 6px;	
+						word-spacing: 2px;
+						/*border-bottom: 0px black solid;*/
+					}
+
+					a {
+						transition: all .2s;
+					}
+
+
+					a:link {
+						text-decoration:none;
+						color: black;
+					}
+
+					a:visited {
+						color: black;
+					}
+
+					a:hover {
+						font-weight: bold;
+					}
+
+
+					#icone {
+						height: 30px;
+						margin-right: 8%;
+					}
+					
+
+					
+
+					.content {
+						display: block;
+						bottom: 0;
+					}
+
+
+					* {
+						margin: 0;
+						padding: 0;
+					}
+
+					@keyframes start{
+
+						0% {
+							transform: translateY(-200px);
+						}
+
+						25% {
+							transform: translateY(-200px);
+							opacity: 1;
+						}
+						100% {
+							transform: translateY(0);
+							opacity: 1;
+						}
+					}
+
+					@keyframes end{
+
+						0% {
+							opacity: 0;
+						}
+						50% {
+							transform: translateY(-10%);
+							opacity: 0;
+						}
+						100% {
+							transform: translateY(0);
+							opacity: 1;
+						}
+
+					}
+
+
+					h3 {
+						bottom: 0;
+						font-family: 'Montserrat', sans-serif;
+						font-weight: lighter;
+						text-transform: uppercase;
+						letter-spacing: 6px;
+						word-spacing: 2px;
+						font-size: 150%;
+						color: black;
+						animation-name:end;
+						animation-duration: 1.2s;
+					}
+					
+					.links {
+						width: 60%;
+						
+						margin: auto;
+					}
+					.links > h3{
+						margin-top: 30%;
+					}
+					.links > ol{
+						margin-top: 20%;
+					}					
+
+					h1{
+						margin-top: 10%;
+						font-family: 'Montserrat', sans-serif;
+						font-weight: bolder;
+						text-transform: uppercase;
+						letter-spacing: 6px;
+						word-spacing: 2px;
+						font-size: 135%;
+						color: black;
+						animation-name:end;
+						animation-duration: 1.2s;
+						text-align: center;
+					}
+
+					@media (max-width: 500px) {
+							h1 {
+							font-size: 200%;
+							margin-left: 6%;
+							}
+					}
+
+					h1::after {
+						content: '';
+						border-top: 1px solid #3063b5;
+						display: block;
+						width: 10%;
+						margin: auto;
+						margin-top:2.3%;
+						animation-name:end;
+						animation-duration: 1.2s;
+					}
+
+					@media (max-width: 500px) {
+
+						h1::after {
+							width: 50%;
+						}
+					}
+
+
+
+					p {
+						text-align: center;
+						font-family: 'Montserrat', sans-serif;
+						font-size: 100%;
+						width: 60%;
+						margin: auto;
+						margin-top: 3%;
+						line-height: 180%;
+						animation: end 1.2s;
+					}
+					@media (max-width: 500px) {
+						p {
+							font-size: 70%;
+						}
+					}
