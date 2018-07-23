@@ -1,41 +1,45 @@
-  <!DOCTYPE html>
-    <html>
-    <body>
-    <p>What is the name(s) of your browser?</p>
-    <button onclick="myFunction()">Try it</button>
-    <p id="demo"></p>
-    <script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="top">top</div>
+    <div class="right">right</div>
+    <div class="content">content</div>
+    <div class="left">left</div>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        display: grid;
+        grid-template-rows: 2fr auto ;
+        grid-template-columns: 2fr 8fr 2fr ;
+        grid-gap: 1vw;
+    }
 
-    function myFunction() { 
-     if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) 
-    {
-        alert('Opera');
+    .top {
+        grid-row: span 10;
+        grid-column: span 3;
+        background-color: blue;
     }
-    else if(navigator.userAgent.indexOf("Chrome") != -1 )
-    {
-        alert('Chrome');
+    .right {
+        grid-row: span 100;
+        background-color: red;
+        height: 100%;
     }
-    else if(navigator.userAgent.indexOf("Safari") != -1)
-    {
-        alert('Safari');
+    .left {
+        grid-row: span 100;
+        background-color: red;
     }
-    else if(navigator.userAgent.indexOf("Firefox") != -1 ) 
-    {
-         alert('Firefox');
+    .content {
+        grid-row: span 100 ;
+        background-color: yellow;
     }
-    else if(navigator.userAgent.indexOf("MS Edge") != -1 ) 
-    {
-         alert('Edge');
-    }
-    else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
-    {
-      alert('IE'); 
-    }  
-    else 
-    {
-       alert('unknown');
-    }
-    }
-    </script>
+</style>
+
 </body>
 </html>

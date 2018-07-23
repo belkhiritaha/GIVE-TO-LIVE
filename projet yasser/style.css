@@ -151,14 +151,14 @@
 					footer {
 						display: grid;
 						  grid-template-areas:
-						    'menu menu blank header header header'
-						    'menu menu blank main right right'
-						    'menu menu blank footer footer footer';
+						    'menu menu menu header header header'
+						    'menu menu menu main right right'
+						    'menu menu menu footer footer footer';
 						  grid-gap: 10px;
 						  margin-top: 10%;
 						  background-color: #21457e;
 						  padding: 10px;
-						  height: 50%;
+						  height: 10%;
 						  width: auto;
 					}
 
