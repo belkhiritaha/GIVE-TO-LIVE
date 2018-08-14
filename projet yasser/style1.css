@@ -10,6 +10,8 @@
 					}
 				}
 
+			
+
 				.container {
 					  position: relative;
 					  margin-left: 24%;
@@ -76,21 +78,24 @@
 
 				@keyframes blop{
 
-					0% {
-						transform: translateY(-50px);
-						opacity: 1;
-					}
+					
 
-					25% {
+					0% {
 						transform: translateY(-25px);
 					}
+					
+					33% {
+						transform: translateY(0px);
+					}
 
-					50% {
-						transform: translateY();
+					66% {
+						transform: translateY(0px);
+						opacity: 0;
 
 					}
-					75% {
-						transform: translateY();
+					100% {
+						transform: translateY(-25px);
+						opacity: 0;
 					}
 				}
 				.scroll {
@@ -104,19 +109,7 @@
 					
 				}
 
-				h2 {	
-						margin-top: 15%;
-						font-family: 'Montserrat', sans-serif;
-						font-weight: bolder;
-						text-transform: uppercase;
-						letter-spacing: 6px;
-						word-spacing: 2px;
-						font-size: 900%;
-						color: black;
-						animation-name:end;
-						animation-duration: 3s;
-						text-align: center;
-				}
+				
 
 				@media (max-width: 500px) {
 					h2 {
@@ -162,29 +155,6 @@
 				  }
 
 
-					ul {
-						font-size: 100%;
-						text-align: center;
-						background-color: #3063b5;
-						position: sticky;
-						padding: 1%;
-						padding-right: 3%;
-						width: 95.9%;
-						top: 0;
-						animation-name:start;
-						animation-duration: 5s;
-						z-index: 1;
-					}
-
-					@media (max-width: 500px) {
-
-						ul {
-							margin-top: 4%;
-							
-							animation-name:heys;
-							animation-duration: 1.2s;
-						/*	font-size: 0.75em;*/
-							}
 
 
 						@keyframes heys{
@@ -204,35 +174,8 @@
 
 					
 
-					li {
-						display: inline;
-						margin: 2%;
-						font-family: 'Montserrat', sans-serif;
-						font-weight: lighter;
-						text-transform: uppercase;
-						letter-spacing: 6px;	
-						word-spacing: 2px;
-						/*border-bottom: 0px black solid;*/
-					}
 
-					a {
-						transition: all .2s;
-					}
-
-
-					a:link {
-						text-decoration:none;
-						color: black;
-					}
-
-					a:visited {
-						color: black;
-					}
-
-					a:hover {
-						font-weight: bold;
-					}
-
+				
 
 					#icone {
 						height: 30px;
@@ -245,6 +188,7 @@
 					.content {
 						display: block;
 						bottom: 0;
+						font-size: 75%;
 					}
 
 
@@ -256,15 +200,16 @@
 					@keyframes start{
 
 						0% {
-							transform: translateY(-200px);
+							opacity: 0;
+						}
+						10% {
+							opacity: 0;
 						}
 
-						25% {
-							transform: translateY(-200px);
-							opacity: 1;
-						}
+
+						
 						100% {
-							transform: translateY(0);
+
 							opacity: 1;
 						}
 					}
@@ -286,7 +231,7 @@
 					}
 
 
-					h3 {
+					#ulinks {
 						bottom: 0;
 						font-family: 'Montserrat', sans-serif;
 						font-weight: lighter;
@@ -367,3 +312,5 @@
 							font-size: 70%;
 						}
 					}
+
+					

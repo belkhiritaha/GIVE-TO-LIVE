@@ -1,4 +1,13 @@
-.contimg {
+				
+				body {
+				   background-attachment: scroll;
+				    background: url(img7.jpg);
+				    background-repeat: no-repeat;
+				    background-size: 100% 100%;
+				}
+
+
+				.contimg {
 					display: flex;
 					z-index: -100;
 				}
