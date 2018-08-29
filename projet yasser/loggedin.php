@@ -27,7 +27,9 @@ $password = "";
 
 ?>
  <div>
-      <img src="avatar.png" class="img-thumbnail">
+      <?php
+      $img_path ="uploads/". $user_id . ".jpg". "?rand=". rand(); ?> 
+      <img src="<?php echo $img_path ?>" class="img-thumbnail" onerror="this.onerror=null; this.src='avatar.png'">
     </div>
     <br/>
     <div>Hi <?php echo $userRow['user_name']; ?></div>
@@ -45,7 +47,7 @@ $password = "";
         <hr />
          <!-- <label class="h5">welcome - <?php print($userRow['user_email']); ?></label> -->
       <ul class="list-group">
-  <a href="profile.php" class="nounderline"><li class="list-group-item"><span class="glyphicon glyphicon-user"></span><i class="fas fa-user-tie"></i>
+  <a href="profile.php?user=<?php echo$userRow['user_name']; ?>" class="nounderline"><li class="list-group-item"><span class="glyphicon glyphicon-user"></span><i class="fas fa-user-tie"></i>
 
 View Profile</li></a>
 

@@ -269,6 +269,7 @@
 						animation-duration: 1.2s;
 						text-align: center;
 					}
+					
 
 					@media (max-width: 500px) {
 							h1 {
@@ -313,4 +314,63 @@
 						}
 					}
 
-					
+
+					@keyframes btn-animate {
+						0% {}
+						100% {
+							border-color: #999999;
+   							box-shadow: 0px 3px 3px #b2b2b2;
+  							padding-top: 3px;
+						}
+					}
+
+					.red {
+					      border-radius: 50%;
+					      width: 20px;
+					      height: 20px;
+					      background-color: red;
+					      border: 1px #dee2e6 solid;
+					    }
+
+					    .yellow {
+					      border-radius: 50%;
+					      width: 20px;
+					      height: 20px;
+					      background-color: yellow;
+					      border: 1px #dee2e6 solid;
+					    }
+
+					    .blue {
+					      border-radius: 50%;
+					      width: 20px;
+					      height: 20px;
+					      background-color: blue;
+					      border: 1px #dee2e6 solid;
+					    }
+
+					    .gray {
+					      border-radius: 50%;
+					      width: 20px;
+					      height: 20px;
+					      background-color: gray;
+					      border: 1px #dee2e6 solid;
+					    }
+				@media (max-width: 576px) {
+					#sidebar {
+						position: static;
+						height: 80%;
+						padding-bottom: 0%;
+						margin-bottom: 0;
+					}
+					#pleasenav {
+						padding-bottom: 10%;
+					}
+					#main {
+						width: 100%;
+						margin: 0;
+						padding-left: 1%;
+					}
+					#particles-js {
+						display: none;
+					}
+				}

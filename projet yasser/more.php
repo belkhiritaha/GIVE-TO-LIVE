@@ -1,7 +1,9 @@
 
 <?php 
+$offre = intval($_GET['offre']);
+            
+
   
-  $offre = intval($_GET['offre']);
   echo("<script>console.log('offre: ".$offre."');</script>");
 
   $logvar = 0;
@@ -10,6 +12,10 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
   {
     $logvar = 1;
   }
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -164,7 +170,105 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
       </script>';
 
           include 'loggedin_more.php';
-        }
+        
+              $db = "dblogin";
+                  $charset = 'utf8mb4';
+                  $host = "localhost";
+                  $user = "root";
+                  $pass = "";
+
+                  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+                  $opt = [
+                      PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                      PDO::ATTR_EMULATE_PREPARES   => false,
+                  ];
+                  $pdo = new PDO($dsn, $user, $pass, $opt);
+                  if ($offre == 1) {
+                    $stmt2 = $pdo->prepare('SELECT o1 FROM offre WHERE ID = :user_id');
+                  }
+                   elseif ($offre == 2) {
+                    $stmt2 = $pdo->prepare('SELECT o2 FROM offre WHERE ID = :user_id');
+                  }
+                    elseif ($offre == 3) {
+                    $stmt2 = $pdo->prepare('SELECT o3 FROM offre WHERE ID = :user_id');
+                  }
+                  elseif ($offre == 4) {
+                    $stmt2 = $pdo->prepare('SELECT o4 FROM offre WHERE ID = :user_id');
+                  }
+                  elseif ($offre == 5) {
+                    $stmt2 = $pdo->prepare('SELECT o5 FROM offre WHERE ID = :user_id');
+
+                  }
+                  $stmt2->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+                  $stmt2->execute();
+
+                  $o=$stmt2->fetch(PDO::FETCH_ASSOC);
+                  foreach ($o as $key => $value) {
+                   if ($value == 0) {
+                      function add(){
+                  global $user_id;
+                  global $offre;
+                  $db = "dblogin";
+                  $charset = 'utf8mb4';
+                  $host = "localhost";
+                  $user = "root";
+                  $pass = "";
+
+                  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+                  $opt = [
+                      PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                      PDO::ATTR_EMULATE_PREPARES   => false,
+                  ];
+                  $pdo = new PDO($dsn, $user, $pass, $opt);
+                  $stmt = $pdo->prepare('UPDATE users SET user_points = user_points + 1 WHERE user_id = :user_id');
+                  $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+                  $stmt->execute();
+
+                  if ($offre == 1) {
+                    $stmt3 = $pdo->prepare('UPDATE offre SET o1 = 1 WHERE ID = :user_id');
+                    $stmt3->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+                    $stmt3->execute();
+                    echo "<style>.container-hdra{display:none;}</style>";
+                  }
+                  elseif ($offre == 2) {
+                    $stmt3 = $pdo->prepare('UPDATE offre SET o2 = 1 WHERE ID = :user_id');
+                    $stmt3->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+                    $stmt3->execute();
+                    echo "<style>.container-hdra{display:none;}</style>";
+                  }
+                  elseif ($offre == 3) {
+                    $stmt3 = $pdo->prepare('UPDATE offre SET o3 = 1 WHERE ID = :user_id');
+                    $stmt3->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+                    $stmt3->execute();
+                    echo "<style>.container-hdra{display:none;}</style>";
+                  }
+                  elseif ($offre == 4) {
+                    $stmt3 = $pdo->prepare('UPDATE offre SET o4 = 1 WHERE ID = :user_id');
+                    $stmt3->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+                    $stmt3->execute();
+                    echo "<style>.container-hdra{display:none;}</style>";
+                  }
+                  elseif ($offre == 5) {
+                    $stmt3 = $pdo->prepare('UPDATE offre SET o5 = 1 WHERE ID = :user_id');
+                    $stmt3->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+                    $stmt3->execute();
+                    echo "<style>.container-hdra{display:none;}</style>";
+                  }
+
+
+          }
+                   }
+                   elseif ($value == 1) {
+                    echo "do ur thing";
+
+                    function add() {
+                      echo "<style>.container-hdra{display:none;}</style>";
+                    }
+                   }
+                  }
+                }
          ?>
         
           <div class="themes" style="text-align: left;">
@@ -193,20 +297,24 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
       <style type="text/css">
         /* ---- reset ---- */ body{ margin:0;} canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ #particles-js{ position:fixed; z-index: -10; width: 100%; height: 100%; background-color: lightblue; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; background-position: 50% 50%; top: 0 } 
       </style>
-      
-       <div class="container-hdra">
-
-
-        <?php if(isset($_GET['add'])){
-                     echo "<h1>Registrated successfully !</h1>";
+      <?php
+      if(isset($_GET['add'])){
+          if ($value == 0) {
+             echo "<h1>Registrated successfully !</h1>";
                      echo "<br/>";
                      echo "<p>You have signed up to join: Lorem Ipsum</p>";
                      echo "<br/>";
                      echo "<p>The organizers have been notified and will contact you shortly</p>";
-                     echo "Thank you for your commitement";
+                     echo "<p>Thank you for your commitement</p>";
                      echo "<a href='home.php'>Click here to go <b>Home</b></a>";
-      
-  } ?>
+                    add();
+          } elseif ($value==1) {
+            echo "<h1>You have already registered (rip english)</h1>";
+          }
+                    }
+              ?>
+       <div class="container-hdra">
+
 
         
         <h1>Lorem Ipsum</h1>
@@ -238,6 +346,8 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
          <div id="plf" class="bg-warning" style="display: none;"><p>Please log in first</p></div>
+
+         <div id="already" class="bg-warning" style="display: none;"><p>You have already registered</p></div>
       
 
 
@@ -247,54 +357,30 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
             document.getElementById('plf').style.display = "block";
            }
 
+           function already(){
+            document.getElementById('already').style.display = "block";
+           }
+
            
          </script>
 
         <?php  
 
-      function add(){
-        global $user_id;
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dblogin";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $sql = "UPDATE users SET user_points = user_points + 1 WHERE user_id='$user_id'";
-
-    // Prepare statement
-    $stmt = $conn->prepare($sql);
-
-    // execute the query
-    $stmt->execute();
-
-    }
-catch(PDOException $e)
-    {
-    echo $sql . "<br>" . $e->getMessage();
-    }
-
-$conn = null;
-}
 
            
       if ($logvar == 0) {
         echo '<button class="btn btn-primary part" id="myAnimation" onclick="logfirst()">Je participe !</button>';
       }
 
+      elseif ($value == 1) {
+         echo '<button class="btn btn-outline-primary part" id="myAnimation" onclick="already()">Je participe !</button>';
+      }
+
       elseif ($logvar == 1) {
-        echo '<a href="more.php?loggedin=true&offre='.$offre.'&add" class="btn btn-primary part">Je participe !</a>';
+        echo "<a href='more.php?loggedin=true&offre=".$offre."&add'>Je participe !</a>";
         $nbr = $userRow['user_points'];  
-              if($_GET){
-                  if(isset($_GET['add'])){
-                      add();
-      
-  }
-}
+
+
   }
   ?>
 
@@ -316,19 +402,21 @@ $conn = null;
       animation: start 2s;
       margin-bottom: 10%;
       margin-top: 3%;
-      transition: transform 300ms;
+      transition: all 300ms;
     } 
 
     .part:hover {
       transform: translateY(10px);
+      box-shadow: 0px -7px 0px -1px #00438bad;
     }
+    
 
     .container-hdra {
       text-align: center;
     }
   
 
-    #plf {
+    #plf, #already {
       width: 30%;
       padding: 1%;
       margin: auto;

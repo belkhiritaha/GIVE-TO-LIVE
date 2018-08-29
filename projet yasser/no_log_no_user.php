@@ -1,16 +1,21 @@
-   <div id="plf" class="bg-warning" style="display: none;"><p>Please log in first</p></div>
-      
 
 
+<div style="width: 70%; margin: auto;text-align: center;margin-top: 10%;">
+    
+    <h1>Please log in to see your profile</h1>
 
-         <script type="text/javascript">
-           function logfirst(){
-            document.getElementById('plf').style.display = "block";
-           }
+    <p>Or :</p>
 
-           
-         </script>
+    <h4 style="font-family: Montserrat;">Search for an other user's profile</h4>
 
-          if ($logvar == 0) {
-        echo '<button class="btn btn-primary part" id="myAnimation" onclick="logfirst()">Je participe !</button>';
-      }
+    <form method="get" action="">
+
+    <input class="form-control form-control-lg" type="text" placeholder="Enter Full Name Here" name="user">
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+
+    </form>
+    
+
+
+</div>
+

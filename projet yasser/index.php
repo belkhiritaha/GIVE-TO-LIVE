@@ -20,7 +20,6 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
     <link rel="stylesheet" type="text/css" href="style1.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     
      
@@ -327,42 +326,7 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
         
 <style type="text/css">
 
-    .red {
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      background-color: red;
-      border: 1px #dee2e6 solid;
-    }
 
-    .yellow {
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      background-color: yellow;
-      border: 1px #dee2e6 solid;
-    }
-
-    .blue {
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      background-color: blue;
-      border: 1px #dee2e6 solid;
-    }
-
-    .gray {
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      background-color: gray;
-      border: 1px #dee2e6 solid;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-    }
 
     @media (max-width: 575.98px) {
       .d-flex {
@@ -466,6 +430,7 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
         }
    
     
+
 </style>
 
 </body>

@@ -20,60 +20,14 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
     <link rel="stylesheet" type="text/css" href="style1.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   
      
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-  
 
-
-
-
-</head>
-<body>
-
-<div class="navbaar" style="position: fixed; top: 0; right: 0; left: 0; z-index: 10;">
-
-  <nav id="pleasenav" class="navbar navbar-expand-lg navbar-dark justify-content-between" id="mynav">
-    <a class="navbar-brand" href="#">Give to live</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="profile.php">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="leaderboard.php">Leaderboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Organizers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-      </ul>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-
-</div>
-<div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 slider" style="position: fixed; top: 5%; left: 0; z-index: 9; padding-top: 8%;">
-      <div class="log-container">
-
-        <style type="text/css">
+ <style type="text/css">
 
 
           @keyframes slide{
@@ -111,6 +65,10 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
 
           .col-lg-10 {
             animation: opac 900ms;
+        height: 100%;
+        background-color: transparent;
+        padding: 0;
+        margin-left: 16.67%;
           }
           
           .navbaar {
@@ -124,11 +82,60 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
 
           .log-container {
             position: relative;
+             height: 100%;
+             padding-bottom: 110%;
           }
-
-        
           
         </style>
+
+  
+
+
+
+
+</head>
+<body>
+
+
+<div class="navbaar" style="position: fixed; top: 0; right: 0; left: 0; z-index: 10;">
+
+  <nav id="pleasenav" class="navbar navbar-expand-lg navbar-dark justify-content-between" id="mynav">
+    <a class="navbar-brand" href="#">Give to live</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profile.php">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="leaderboard.php">Leaderboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Organizers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+</div>
+<div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 slider" id="sidebar">
+      <div class="log-container" id="pleasenav">
+
+       
         <?php 
         if ($logvar == 0) {
           include 'index_home.php';
@@ -170,9 +177,7 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
           
           <h6>Themes:</h6>
 
-          <script type="text/javascript" src="themes.js"></script>
-         
-    <div class="buttons" style="text-align: left;">
+           <div class="buttons" style="text-align: left;">
          
 
           <button type="submit" class="red" onclick="red()"></button>
@@ -182,10 +187,17 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
 
 
     </div>
+
+         
+
+
     </div>
+
+
       </div>
-    </div>
-    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12" style="margin-left: 16.67%;">
+    
+  </div>
+    <div id="main" class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
 
       
        
@@ -195,16 +207,16 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
             
 
 
-              <!-- particles.js container --> <div id="particles-js"></div><script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+              <div id="particles-js"></div><script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
       <script type="text/javascript" src="particles.js"></script>
 
       <style type="text/css">
-        /* ---- reset ---- */ body{ margin:0;} canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ #particles-js{ position:fixed; z-index: -10; width: 100%; height: 100%; background-color: lightblue; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; background-position: 50% 50%; top: 0 } 
+        /* ---- reset ---- */ body{ margin:0;} canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ #particles-js{ position:fixed; z-index: -10; width: 100%; height: 100%; /*background-color: lightblue*/; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; background-position: 50% 50%; top: 0 } 
       </style>
 
         
             
-      <div class="all" style="background-color: rgba(10, 10, 10, 0.2); width: 100%;">
+      <div id="all" class="all" style="background-color: rgba(10, 10, 10, 0.2); width: 100%;">
              <div class="container">
 
 
@@ -489,7 +501,12 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
   
 
         
+
+</div>
+
+        
 <style type="text/css">
+
     
 
     * {
@@ -506,6 +523,7 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
         display: block !important;
       }
      }
+
 
     
     .navbar {
@@ -534,27 +552,13 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
         padding: 2vw;
         padding-bottom: 50%;
         margin-bottom: 100%;
+        position: fixed;
+        top: 5%;
+        left: 0px;
+        z-index: 9;
+        padding-top: 8%;
+        background-color: rgb(166, 204, 245);
     }
-
-    .col-lg-10 {
-        height: 100%;
-        background-color: white;
-        padding: 0;
-    }
-
-    .row {
-      position: relative;
-    }
-
-
-
-    .carousel {
-    height: 75%;
-     }
-
-  .carousel-inner {
-    height: 100%;
-     }
 
   .item {
     background-size: cover;
@@ -586,21 +590,13 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
         margin-right: 0;
         display: flex;
         align-items: center;
-    }
-
-    .log-container {
-      height: 100%;
-      padding-bottom: 110%;
+         position: relative;
     }
 
     .container {
-      padding-right: 0;
+      padding: 0;
       margin: auto;
       width: 100%;
-    }
-
-    h2 {
-      width: 75%;
     }
 
     .list-group-item {
@@ -619,11 +615,7 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
       text-align: left;
     }
     
-</style>
-</div>
 
-        
-<style type="text/css">
 
     .red {
       border-radius: 50%;
@@ -649,54 +641,14 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
       border: 1px #dee2e6 solid;
     }
 
-    .gray {
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      background-color: gray;
-      border: 1px #dee2e6 solid;
+    .blue, .yellow, .red {
+      margin-right: 1px;
     }
 
     * {
         margin: 0;
         padding: 0;
     }
-
-    @media (max-width: 575.98px) {
-      .d-flex {
-        display: block !important;
-      }
-     }
-
-
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-
-    .navbar-brand {
-      font-family: 'Montserrat', sans-serif;
-      letter-spacing: 3px;
-      font-weight: bolder;
-    }
-
-    
-
-     .col-lg-2 {
-        height: 100%;
-        background-color: #a6ccf5;
-        padding: 2vw;
-        padding-bottom: 50%;
-    }
-
-    .col-lg-10 {
-        height: 100%;
-        background-color: transparent;
-        padding: 0;
-
-    }
-
-
 
     .carousel {
     height: 75%;
@@ -705,38 +657,6 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
   .carousel-inner {
     height: 100%;
      }
-
-  .item {
-    background-size: cover;
-    background-position: 50% 50%;
-    width: 100%;
-    height: 100%;
-     }
-
-  .item img {
-    visibility: hidden;
-     }
-
-
-    .p {
-        font-size: 8px;
-        width: 0%;
-    }
-
-    .row {
-        margin-right: 0;
-    }
-
-    .log-container {
-      height: 100%;
-      padding-bottom: 110%;
-    }
-
-    .container {
-      padding: 0;
-      margin: auto;
-      width: 100%;
-    }
 
     h2 {
       width: 75%;
@@ -761,5 +681,6 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
     
 </style>
 
+ <script type="text/javascript" src="themes.js"></script> 
 </body>
 </html>

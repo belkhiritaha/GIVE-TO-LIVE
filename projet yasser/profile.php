@@ -1,7 +1,5 @@
 <?php 
 
-
-
   $logvar = 0;
 
 if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
@@ -49,7 +47,28 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
           <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="profile.php">Profile</a>
+          <?php if ($logvar == 1) {
+                        require_once("session.php");
+              
+              require_once("class.user.php");
+              $auth_user = new USER();
+              
+              
+              $user_id = $_SESSION['user_session'];
+              
+              $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
+              $stmt->execute(array(":user_id"=>$user_id));
+              
+              $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            echo '<a class="nav-link active" href="profile.php?user='.$userRow['user_name'].'">Profile</a>';
+          } else {
+            echo '<a class="nav-link active" href="profile.php">Profile</a>';
+          } 
+          ?>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="leaderboard.php">Leaderboard</a>
@@ -138,49 +157,7 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
         }
         elseif ($logvar == 1) {
 
-          require_once("session.php");
-  
-          require_once("class.user.php");
-          $auth_user = new USER();
-          
-          
-          $user_id = $_SESSION['user_session'];
-          
-          $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-          $stmt->execute(array(":user_id"=>$user_id));
-          
-          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-
-          
-            echo '<script type="text/javascript">
-           console.log("user loggedin");
-      </script>';
-
-         
-         echo ' <div class="log-container">
-
-          <h3>Profile:</h3>
-          
-          <label class="h6">welcome : '.$userRow['user_name'].'</label>
-
-          <hr/>
-
-              <div>
-      <img src="avatar.png" class="img-thumbnail">
-    </div>
-    
-        <hr />  
-         <!-- <label class="h5">welcome - '.$userRow['user_email'].'</label> -->
-      <ul class="list-group">
-      <a href="logout.php?logout=true" class="nounderline"><li class="list-group-item"><span class="glyphicon glyphicon-log-out"></span><i class="fas fa-sign-out-alt"></i>Log Out</li></a>
-    </ul>
-
-  </div>';
+          include 'loggedin.php';
         }
          ?>
         
@@ -204,28 +181,107 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
       </div>
     </div>
     <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12" style="margin-left: 16.67%;">
+    <script type="text/javascript">
+       function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("fileToUpload").files[0]);
 
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
+    function show() {
+      document.getElementById('containeredit').style.display="block";
+      document.getElementById('editbutton').style.display="none";
+    }
+    </script>
       
        <?php
+       if ($_GET['user']=="") {
+            $quote = "'";
+          echo '
+          <div style="width: 70%; margin: auto;text-align: center;margin-top: 10%;">
+          
+          <h1>No user specified</h1>
 
-       if ($logvar == 1 && isset($_GET['user'])) {
-          $new_id = intval($_GET['user']);
-          echo '<script>console.log("other user, id :'.$new_id.'")</script>';
+       
+
+          <form method="get" action="">
+
+          <input class="form-control form-control-lg" type="text" placeholder="Enter Full Name Here" name="user">
+          <button type="submit" class="btn btn-primary mb-2">Search</button>
+
+          </form>
+          
+
+
+          </div>
+
+      ';
        }
-        elseif ($logvar == 1 ) {
-          echo '<script>console.log("My profile")</script>';
-       }
-       elseif ($logvar == 0 && isset($_GET['user'])) {
-          $new_id = intval($_GET['user']);
+       elseif ($logvar == 1 && isset($_GET['user'])) {
+          $new_id = $_GET['user'];
           echo '<script>console.log("other user, id :'.$new_id.'")</script>';
           include 'try.php';
        }
+       elseif ($logvar == 0 && $_GET['user']) {
+          $new_id = intval($_GET['user']);
+          echo '<script>console.log("other user, id :'.$new_id.'")</script>';
+          $userRow['user_name'] == "";
+          include 'try.php';
+       }
         elseif ($logvar == 0 ) {
+          $quote = "'";
           echo '<script>console.log("please log in first")</script>';
+          echo '
+<div style="width: 70%; margin: auto;text-align: center;margin-top: 10%;">
+    
+    <h1>Please log in to see your profile</h1>
+
+    <p>Or :</p>
+
+    <h4 style="font-family: Montserrat;">Search for an other user'.$quote.'s profile</h4>
+
+    <form method="get" action="">
+
+    <input class="form-control form-control-lg" type="text" placeholder="Enter Full Name Here" name="user">
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+
+    </form>
+    
+
+
+</div>
+
+';
+        }
+        elseif ($logvar == 1 ) {
+          $quote = "'";
+          echo '
+<div style="width: 70%; margin: auto;text-align: center;margin-top: 10%;">
+    
+    <h1>No user specified</h1>
+
+    <p>Please search for a user or press "View Profile".</p>
+
+
+    <form method="get" action="">
+
+    <input class="form-control form-control-lg" type="text" placeholder="Enter Full Name Here" name="user">
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+
+    </form>
+    
+
+
+</div>
+
+';
         }
         
 
-
+        
 
          ?>
 
@@ -372,7 +428,7 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
 
     .log-container {
       height: 100%;
-      padding-bottom: 110%;
+      padding: 0;
     }
 
 

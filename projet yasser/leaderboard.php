@@ -61,8 +61,8 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
           <a class="nav-link" href="#">About</a>
         </li>
       </ul>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline" method="get" action="search.php">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="s">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -212,8 +212,11 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
               function reveal() {
                 document.getElementById('license').style.display = "block";
               }
+              function disapear() {
+                document.getElementById('license').style.display = "none";
+              }
             </script>
-            <img onmouseover="reveal()"  src="winner.svg" onerror="this.onerror=null; this.src='winner.png'" style="width: 15%;">
+            <img onmouseover="reveal()" onmouseleave="disapear()" src="winner.svg" onerror="this.onerror=null; this.src='winner.png'" style="width: 15%;">
             
 
 
@@ -253,21 +256,18 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
             while ($row = $stmt->fetch())
             {
                 if ($i < 4) {
-                  echo "<tr class='podium'>";
+                  echo "<tr class='podium clickable-row' data-href='profile.php?user=".$row['user_name']."'>";
+                  echo "<td>".$i. "</td>";
+                  echo "<td><a class='proflink' href='profile.php?user=".$row['user_name']."'>".$row['user_name'] . "</a></td>";
                 }
                 else {
-                  echo "<tr>";
+                  echo "<tr class='clickable-row' data-href='profile.php?user=".$row['user_name']."'>";
+                  echo "<td>".$i. "</td>";
+                  echo "<td><a class='proflink' href='profile.php?user=".$row['user_name']."'>".$row['user_name'] . "</a></td>";
                 }
-               
-                echo "<td>".$i. "</td>";
-                echo "<td><a class='proflink' href='profile.php?user=".$row['user_id']."'>".$row['user_name'] . "</a></td>";
-                if ($row['user_points'] == NULL) {
-                  $row['user_points'] = 0;
-                  $i = $i ;
-                }
-                else {
-                  $i = $i + 1;
-                }
+   
+                $i = $i + 1 ;
+                
                 echo "<td>".$row['user_points'] . "</td>";
                 echo "</tr>";
                 
@@ -286,6 +286,14 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
                 
               </div>
 
+              <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                  $(".clickable-row").click(function() {
+                      window.location = $(this).data("href");
+                  });
+              });
+              </script>
+              
 
 
 
@@ -305,6 +313,11 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
 
         
 <style type="text/css">
+
+    .clickable-row {
+      cursor: pointer;
+      position: relative;
+    }
     
     .license {
       display: none;
@@ -328,7 +341,6 @@ if(isset($_GET['loggedin']) && $_GET['loggedin']=="true")
     }
 
     .podium:hover {
-      cursor: pointer;
       background-color: #d3bc79c7;
     }
 

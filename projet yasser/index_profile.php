@@ -1,17 +1,15 @@
 <?php
 if (isset($_GET['user'])) {
-    $new_id = intval($_GET['user']);
+    $new_id = $_GET['user'];
     session_start();
 require_once("class.user.php");
 $login = new USER();
 
 if($login->is_loggedin()!="")
 {
-    for ($i=1; $i < 20 ; $i++) { 
-            if ($new_id == $i) {
-            $login->redirect("profile.php?loggedin=true&user=".$i);
-        }
-    }
+    
+            $login->redirect("profile.php?loggedin=true&user=".$new_id);
+      
 }
 
 if(isset($_POST['btn-login']))
@@ -22,11 +20,9 @@ if(isset($_POST['btn-login']))
         
      if($login->doLogin($uname,$umail,$upass))
     {
-        for ($i=1; $i < 20 ; $i++) { 
-            if ($new_id == $i) {
-            $login->redirect("profile.php?loggedin=true&user=".$i);
-            }
-         }
+        
+            $login->redirect("profile.php?loggedin=true&user=".$new_id);
+         
     }
        else
     {
@@ -76,7 +72,7 @@ if(isset($_POST['btn-login']))
     
 <div class="signin-form">
 
-    <div class="container">
+    <div class="container" style="padding: 0">
      
         
        <form class="form-signin" method="post" id="login-form">
