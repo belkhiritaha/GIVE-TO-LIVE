@@ -1,0 +1,115 @@
+html {
+	background-image: url(wtf.png);
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+h1 {
+	text-align: center;
+	color: hotpink;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 220px;
+	-webkit-text-stroke: 1px rgb(0, 0, 0, 0.7);
+	margin: 0;
+}
+
+h2 {
+	text-align: center;
+	color: hotpink;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 100px;
+	-webkit-text-stroke: 1px rgb(0, 0, 0, 0.7);
+	margin: 0;
+}
+
+h3 {
+	text-align: center;
+	color: hotpink;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 50px;
+	-webkit-text-stroke: 1px rgb(0, 0, 0, 0.7);
+	margin: 0;
+}
+
+
+.scroll {
+	padding: 30px;
+	padding-top: 60px;
+	background-color:rgb(188, 138, 73, 0.8);
+	border: 4px #876233 solid;
+}
+
+p {
+	font-family: 'Libre Franklin', sans-serif;
+	font-size: 20px;
+}
+
+body{
+    font-family:calibri;
+  }
+
+
+.codinfox-changing-keywords{
+  vertical-align:top;
+  height:20px;
+  position:relative;
+  display: inline-block;
+    width: 500px;
+    font-size: 20px;
+}
+.hidden{
+  position:absolute;
+  text-align: center;
+  top: 20px;
+  display:inline-block;
+  width:250px;
+    opacity:0;
+  animation: slideme 14s infinite;
+}
+.hidden:nth-child(3){
+  animation-delay: 2s;
+}
+.hidden:nth-child(5){
+  animation-delay: 4s;
+}
+.hidden:nth-child(7){
+  animation-delay: 6s;
+}
+.hidden2{
+  animation-delay: 8s;
+}
+
+.hidden3{
+  animation-delay: 10s;
+}
+
+.hidden4{
+  animation-delay: 12s;
+}
+@keyframes slideme {
+  0% {
+    top: 20px;
+    opacity:0;
+  }
+  5% {
+    top: 0px;
+    opacity:1;
+  }
+  10%{
+    top : 0;
+    opacity:1;
+  }
+  20%{
+    opacity:0.2;
+  }
+  25% {    
+  opacity:0.05;
+    top : 0;
+  }
+  30% {
+    opacity:0;
+    top: 20px;
+  }
+}
